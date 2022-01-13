@@ -8,18 +8,21 @@ import {
 	Route,
 	Link
 } from "react-router-dom";
+import {SideNavigationAndPage} from "./components/side-navigation-and-page/side-navigation-and-page";
 
 
 function App() {
 	return (
-		<div className="router">
+		<React.Fragment>
 			<Router>
+			<Header/>
 				<div className="App container-fluid g-0">
-					<Header/>
-					<RouterConfiguration/>
+					<main role="main">
+						<SideNavigationAndPage/>
+					</main>
 				</div>
 			</Router>
-		</div>
+		</React.Fragment>
 	);
 }
 

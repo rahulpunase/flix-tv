@@ -4,7 +4,7 @@ import './side-navigation.scss';
 function SideNavigation() {
 	return (
 		<div className="side-navigation-component">
-
+			some nav
 		</div>
 	);
 }

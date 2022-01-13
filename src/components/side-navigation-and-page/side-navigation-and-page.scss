@@ -1,0 +1,16 @@
+.side-navigation-and-page-component {
+	height: 100%;
+	position: relative;
+	padding-top: 100px;
+	.main-holder {
+		height: 100%;
+		display: flex;
+		.left-navigation-holder {
+			min-width: 260px;
+			width: 260px;
+		}
+		.router-holders {
+			flex: 1;
+		}
+	}
+}
