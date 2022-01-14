@@ -1,8 +1,50 @@
-@import "./src/styles/variable";;
+@import "./src/styles/variable";
 .header-component {
 	height: 100px;
 	width: 100%;
 	position: fixed;
 	top: 0;
 	z-index: 10000;
+	.he-centre {
+		display: flex;
+		align-items: center;
+		height: 100%;
+		.nav-container {
+			display: flex;
+			width: 100%;
+			.nav-logo {
+				width: 260px;
+				padding: 0 26px;
+			}
+			.right-container {
+				flex: 1;
+				width: 0;
+				display: flex;
+				justify-content: space-between;
+				.search-holder {
+					width: 30%;
+					display: flex;
+					align-items: center;
+				}
+				.other-option-holder {
+					display: flex;
+					align-items: center;
+					padding-right: 10px;
+					.options {
+						display: flex;
+						.option-items {
+							cursor: pointer;
+							font-size: 20px;
+							color: $font-color;
+							margin: 0 10px;
+							transition: 0.2s all ease-in-out;
+							&:hover {
+								font-size: 22px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }

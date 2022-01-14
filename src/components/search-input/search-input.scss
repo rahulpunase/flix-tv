@@ -1,0 +1,30 @@
+.search-input-component {
+	width: 100%;
+	display: flex;
+	background: white;
+	border-radius: 8px;
+	overflow: hidden;
+	align-items: center;
+	.input-holder {
+		width: 90%;
+		input {
+			max-width: unset;
+			width: 100%;
+			border: none;
+			outline: none;
+			font-size: 20px;
+			padding: 10px;
+		}
+	}
+	.button-holder {
+		width: 10%;
+		height: 100%;
+		button {
+			width: 100%;
+			background: transparent;
+			border: none;
+			height: 100%;
+			font-size: 20px;
+		}
+	}
+}

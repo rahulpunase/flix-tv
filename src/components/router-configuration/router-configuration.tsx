@@ -10,7 +10,7 @@ const RouterConfiguration = () => {
 	return (
 		<div className='router-configuration-component'>
 			<Switch>
-				<Route exact={true} path="/">
+				<Route exact={true} path="/home">
 					<HomePage />
 				</Route>
 			</Switch>

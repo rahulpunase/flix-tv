@@ -1,5 +1,45 @@
+@import "src/styles/variable";
 .side-navigation-component {
 	position: fixed;
 	width: 260px;
 	height: 100%;
+	font-family: $be-vietnam-pro-regular;
+	box-sizing: border-box;
+	padding: 0 10px;
+	.nav-holder {
+		.nav-list {
+			padding-left: 16px;
+			text-align: left;
+			.nav-list-item {
+				font-size: 18px;
+				color: $font-color;
+				display: block;
+				text-decoration: none;
+				position: relative;
+				margin: 10px 0;
+				overflow: hidden;
+				transition: 0.2s all ease-in-out;
+				span {
+					margin-left: 10px;
+				}
+				&:hover {
+					font-size: 20px;
+				}
+				&::before {
+					content: "";
+					height: 100%;
+					width: 4px;
+					background: white;
+					position: absolute;
+					transition: 0.2s all ease-in-out;
+					transform: translateY(120%);
+				}
+				&.active {
+					&::before {
+						transform: translateY(0%);
+					}
+				}
+			}
+		}
+	}
 }
