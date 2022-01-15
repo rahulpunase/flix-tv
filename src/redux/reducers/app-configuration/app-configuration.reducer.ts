@@ -12,6 +12,7 @@ export interface IAppConfiguration {
 		still_sizes: Array<string>
 	},
 	change_keys: Array<string>;
+	initialized: boolean;
 }
 
 const defaultState: IAppConfiguration = {
@@ -24,16 +25,18 @@ const defaultState: IAppConfiguration = {
 		profile_sizes: [],
 		still_sizes: []
 	},
-	change_keys: []
+	change_keys: [],
+	initialized: false
 }
 
-export const appConfiguration = (state: IAppConfiguration = defaultState, action: IAction<any>) => {
+export const appConfiguration = (state: IAppConfiguration = defaultState, action: IAction<IAppConfiguration>) => {
 	switch (action.type) {
 		case INITIATE_APP: {
 			return {
 				...state,
 				images: action.payload.images,
-				change_keys: action.payload.chane_keys
+				change_keys: action.payload.change_keys,
+				initialized: true
 			}
 		}
 		default: {

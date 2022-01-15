@@ -1,6 +1,7 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import {appConfiguration, IAppConfiguration} from "../reducers/app-configuration/app-configuration.reducer";
 import thunk from 'redux-thunk';
+import {flixData, IFlixData} from "../reducers/flix-data/flix-data.reducer";
 
 export interface IAction<T> {
 	type: string;
@@ -8,11 +9,13 @@ export interface IAction<T> {
 }
 
 export interface IStore {
-	appConfiguration: IAppConfiguration
+	appConfiguration: IAppConfiguration,
+	flixData: IFlixData
 }
 
 const combinedReducers = combineReducers({
-	appConfiguration: appConfiguration
+	appConfiguration: appConfiguration,
+	flixData: flixData
 });
 
 export const store = createStore<IStore, any, any, any>(combinedReducers, applyMiddleware(thunk));
