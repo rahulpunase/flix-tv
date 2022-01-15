@@ -1,6 +1,7 @@
 import React from 'react';
 import {useSelector} from "react-redux";
 import {IStore} from "../../redux/store/store";
+import './base-image.scss';
 
 export interface IBaseImage {
 	src: string;
