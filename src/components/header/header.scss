@@ -22,7 +22,7 @@
 				display: flex;
 				justify-content: space-between;
 				.search-holder {
-					width: 30%;
+					width: 50%;
 					display: flex;
 					align-items: center;
 				}
@@ -36,10 +36,10 @@
 							cursor: pointer;
 							font-size: 20px;
 							color: $font-color;
-							margin: 0 10px;
+							margin: 0 20px;
 							transition: 0.2s all ease-in-out;
 							&:hover {
-								font-size: 22px;
+								transform: scale(1.1, 1.1);
 							}
 						}
 					}
