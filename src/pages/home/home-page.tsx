@@ -11,6 +11,8 @@ import {ITrendingData} from "../../redux/reducers/flix-data/flix-data.reducer";
 import {IStore} from "../../redux/store/store";
 import {BaseImage} from "../../components/base-image/base-image";
 import {NavLink} from 'react-router-dom';
+import swiperData from '../../components/content-swiper/data/content-swiper-data.json';
+import ContentSwiper from "../../components/content-swiper/content-swiper";
 
 
 function HomePage() {
@@ -33,7 +35,11 @@ function HomePage() {
 						store.flixData.trending && store.flixData.trending.results.map(trending => (
 							<SwiperSlide key={trending.id} className="custom-swiper-slides">
 								<NavLink to={`movie/${trending.id}`} className="slide-wrapper">
-									<div className="header"></div>
+									<div className="header">
+										<div className="rating-holder">
+											{/*<Rating/>*/}
+										</div>
+									</div>
 									<BaseImage imageSize="w780" src={trending.poster_path}/>
 								</NavLink>
 							</SwiperSlide>
@@ -41,6 +47,17 @@ function HomePage() {
 					}
 				</Swiper>
 			</div>
+			<section>
+				{
+					swiperData.map(swiperData => (
+						<ContentSwiper
+							key={swiperData.heading}
+							heading={swiperData.heading}
+							tabOptions={swiperData.tabOptions}
+						/>
+					))
+				}
+			</section>
 		</div>
 	);
 }

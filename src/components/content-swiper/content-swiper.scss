@@ -1,0 +1,11 @@
+@import "src/styles/variable";
+.content-swiper-component {
+	font-family: $be-vietnam-pro-regular;
+	.header {
+		display: flex;
+		.heading {
+			font-size: 36px;
+			color: $dark-font-color;
+		}
+	}
+}

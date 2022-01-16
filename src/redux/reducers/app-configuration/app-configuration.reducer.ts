@@ -1,5 +1,10 @@
 import {IAction} from "../../store/store";
-import {INITIATE_APP} from "./app-configuration.action";
+import {INITIATE_APP, INITIATE_COUNTRIES} from "./app-configuration.action";
+
+export interface ICountry {
+	iso_3166_1: string;
+	english_name: string;
+}
 
 export interface IAppConfiguration {
 	images: {
@@ -13,6 +18,7 @@ export interface IAppConfiguration {
 	},
 	change_keys: Array<string>;
 	initialized: boolean;
+	countries: Array<ICountry>
 }
 
 const defaultState: IAppConfiguration = {
@@ -26,10 +32,11 @@ const defaultState: IAppConfiguration = {
 		still_sizes: []
 	},
 	change_keys: [],
-	initialized: false
+	initialized: false,
+	countries: []
 }
 
-export const appConfiguration = (state: IAppConfiguration = defaultState, action: IAction<IAppConfiguration>) => {
+export const appConfiguration = (state: IAppConfiguration = defaultState, action: IAction<IAppConfiguration>): IAppConfiguration => {
 	switch (action.type) {
 		case INITIATE_APP: {
 			return {
@@ -37,6 +44,12 @@ export const appConfiguration = (state: IAppConfiguration = defaultState, action
 				images: action.payload.images,
 				change_keys: action.payload.change_keys,
 				initialized: true
+			}
+		}
+		case INITIATE_COUNTRIES: {
+			return {
+				...state,
+				countries: action.payload.countries
 			}
 		}
 		default: {

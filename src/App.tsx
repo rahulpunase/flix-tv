@@ -7,16 +7,25 @@ import {
 import {SideNavigationAndPage} from "./components/side-navigation-and-page/side-navigation-and-page";
 import {Provider, useDispatch, useSelector} from 'react-redux';
 import {IStore, store} from "./redux/store/store";
-import {getConfigurations} from "./http/http-handler";
-import {IAppConfiguration} from "./redux/reducers/app-configuration/app-configuration.reducer";
-import {_initiateApp} from "./redux/reducers/app-configuration/app-configuration.action";
+import {getConfigurations, getCountries} from "./http/http-handler";
+import {
+	IAppConfiguration,
+	ICountry
+} from "./redux/reducers/app-configuration/app-configuration.reducer";
+import {_initiateApp, _initiateCountries} from "./redux/reducers/app-configuration/app-configuration.action";
+import {forkJoin} from "rxjs";
 
 
 function App() {
 	const dispatch = useDispatch();
 	const store = useSelector((store: IStore) => store);
 	useEffect(() => {
-		getConfigurations<IAppConfiguration>().subscribe(appConfiguration => dispatch(_initiateApp(appConfiguration)));
+		forkJoin(
+			[getConfigurations<IAppConfiguration>(), getCountries<Array<ICountry>>()]
+		).subscribe(([appConfiguration, countries]) => {
+			dispatch(_initiateApp(appConfiguration));
+			dispatch(_initiateCountries(countries))
+		})
 	}, []);
 	return (
 		<React.Fragment>

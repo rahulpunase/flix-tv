@@ -1,0 +1,8 @@
+[{
+  "heading": "What's Popular",
+  "tabOptions": [{
+    "name": "Rent",
+    "tabIconClass": "fa fa-user",
+    "tabApiPath": "/discover/movie?language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&watch_region=US&with_watch_monetization_types=rent"
+  }]
+}]
