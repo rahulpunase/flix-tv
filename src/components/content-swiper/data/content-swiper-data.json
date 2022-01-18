@@ -1,8 +1,48 @@
-[{
-  "heading": "What's Popular",
-  "tabOptions": [{
-    "name": "Rent",
-    "tabIconClass": "fa fa-user",
-    "tabApiPath": "/discover/movie?language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&watch_region=US&with_watch_monetization_types=rent"
-  }]
-}]
+[
+  {
+    "heading": "What's Popular",
+    "tabOptions": [
+      {
+        "name": "R Rated",
+        "tabIconClass": "fa fa-users",
+        "tabApiPath": "/discover/movie/?certification_country=US&certification=R&sort_by=vote_average.desc&page=1",
+        "selected": true
+      },
+      {
+        "name": "For Kids",
+        "tabIconClass": "fas fa-child",
+        "tabApiPath": "/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc&page=1",
+        "selected": false
+      },
+      {
+        "name": "On Rent",
+        "tabIconClass": "fas fa-money-bill-wave-alt",
+        "tabApiPath": "/discover/movie?language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&watch_region=US&with_watch_monetization_types=rent",
+        "selected": false
+      },
+      {
+        "name": "In Theatres",
+        "tabIconClass": "fa fa-theater-masks",
+        "tabApiPath": "/discover/movie?primary_release_date.gte=2014-09-15&primary_release_date.lte=2014-10-22&page=1",
+        "selected": false
+      }
+    ]
+  },
+  {
+    "heading": "Free to Watch",
+    "tabOptions": [
+      {
+        "name": "Movie",
+        "tabIconClass": "fa fa-film",
+        "tabApiPath": "/discover/movie?language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&watch_region=US&with_watch_monetization_types=free",
+        "selected": true
+      },
+      {
+        "name": "TV",
+        "tabIconClass": "fa fa-tv",
+        "tabApiPath": "/discover/tv?language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&watch_region=US&with_watch_monetization_types=free",
+        "selected": false
+      }
+    ]
+  }
+]

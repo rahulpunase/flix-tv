@@ -1,5 +1,5 @@
 import {getR} from "./http-configuration";
-import {Observable} from "rxjs";
+import {forkJoin, map, Observable} from "rxjs";
 
 
 
@@ -13,4 +13,15 @@ export const getCountries = <T>(): Observable<T> => {
 
 export const getTodayTrending = <T>(): Observable<T> => {
 	return getR('trending/all/day');
+}
+
+export const getGenres = <T>(): Observable<{movie:T, tv: T}> => {
+	return forkJoin(
+		[getR<T>('/genre/movie/list'), getR<T>('/genre/tv/list')]
+	).pipe(
+		map(([movieGenre, tvGenre]) => ({
+			movie: movieGenre,
+			tv: tvGenre
+		}))
+	)
 }

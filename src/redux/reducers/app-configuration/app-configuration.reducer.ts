@@ -1,10 +1,20 @@
 import {IAction} from "../../store/store";
-import {INITIATE_APP, INITIATE_COUNTRIES} from "./app-configuration.action";
+import {INITIATE_APP, INITIATE_COUNTRIES, INITIATE_GENRES} from "./app-configuration.action";
 
 export interface ICountry {
 	iso_3166_1: string;
 	english_name: string;
 }
+
+export interface IGenre {
+	id: number;
+	name: string;
+}
+
+/*export interface IGenres<T> {
+	movie: Array<T>,
+	tv: Array<T>
+}*/
 
 export interface IAppConfiguration {
 	images: {
@@ -18,7 +28,11 @@ export interface IAppConfiguration {
 	},
 	change_keys: Array<string>;
 	initialized: boolean;
-	countries: Array<ICountry>
+	countries: Array<ICountry>;
+	genres: {
+		movie: { genres: Array<IGenre> },
+		tv: { genres: Array<IGenre> }
+	}
 }
 
 const defaultState: IAppConfiguration = {
@@ -33,7 +47,11 @@ const defaultState: IAppConfiguration = {
 	},
 	change_keys: [],
 	initialized: false,
-	countries: []
+	countries: [],
+	genres: {
+		movie: {genres: []},
+		tv: {genres: []}
+	}
 }
 
 export const appConfiguration = (state: IAppConfiguration = defaultState, action: IAction<IAppConfiguration>): IAppConfiguration => {
@@ -50,6 +68,16 @@ export const appConfiguration = (state: IAppConfiguration = defaultState, action
 			return {
 				...state,
 				countries: action.payload.countries
+			}
+		}
+		case INITIATE_GENRES: {
+			console.log(action);
+			return {
+				...state,
+				genres: {
+					movie: action.payload.genres.movie,
+					tv: action.payload.genres.tv
+				}
 			}
 		}
 		default: {

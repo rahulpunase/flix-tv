@@ -17,6 +17,7 @@ import ContentSwiper from "../../components/content-swiper/content-swiper";
 
 function HomePage() {
 	const [height, setHeight] = useState(0);
+	const [swiperStateData, setSwiperStateData] = useState(swiperData);
 	const dispatch = useDispatch();
 	const store = useSelector((store: IStore) => store);
 	useEffect(() => {
@@ -49,7 +50,7 @@ function HomePage() {
 			</div>
 			<section>
 				{
-					swiperData.map(swiperData => (
+					swiperStateData.map(swiperData => (
 						<ContentSwiper
 							key={swiperData.heading}
 							heading={swiperData.heading}

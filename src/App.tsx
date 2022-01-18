@@ -7,12 +7,16 @@ import {
 import {SideNavigationAndPage} from "./components/side-navigation-and-page/side-navigation-and-page";
 import {Provider, useDispatch, useSelector} from 'react-redux';
 import {IStore, store} from "./redux/store/store";
-import {getConfigurations, getCountries} from "./http/http-handler";
+import {getConfigurations, getCountries, getGenres} from "./http/http-handler";
 import {
 	IAppConfiguration,
-	ICountry
+	ICountry, IGenre
 } from "./redux/reducers/app-configuration/app-configuration.reducer";
-import {_initiateApp, _initiateCountries} from "./redux/reducers/app-configuration/app-configuration.action";
+import {
+	_initiateApp,
+	_initiateCountries,
+	_initiateGenres
+} from "./redux/reducers/app-configuration/app-configuration.action";
 import {forkJoin} from "rxjs";
 
 
@@ -21,11 +25,12 @@ function App() {
 	const store = useSelector((store: IStore) => store);
 	useEffect(() => {
 		forkJoin(
-			[getConfigurations<IAppConfiguration>(), getCountries<Array<ICountry>>()]
-		).subscribe(([appConfiguration, countries]) => {
+			[getConfigurations<IAppConfiguration>(), getCountries<Array<ICountry>>(), getGenres<[genres: IGenre, genres: IGenre]>()]
+		).subscribe(([appConfiguration, countries, genres]) => {
 			dispatch(_initiateApp(appConfiguration));
-			dispatch(_initiateCountries(countries))
-		})
+			dispatch(_initiateCountries(countries));
+			dispatch(_initiateGenres({genres: genres}));
+		});
 	}, []);
 	return (
 		<React.Fragment>

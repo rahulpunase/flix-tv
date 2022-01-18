@@ -1,11 +1,28 @@
 @import "src/styles/variable";
+
 .content-swiper-component {
 	font-family: $be-vietnam-pro-regular;
+
 	.header {
 		display: flex;
+		align-items: center;
+
 		.heading {
 			font-size: 36px;
 			color: $dark-font-color;
+		}
+
+		.content-tab-holder {
+			margin-left: 20px;
+		}
+	}
+
+	.pagination-holder {
+		display: flex;
+		justify-content: flex-end;
+
+		.pagination-to-right {
+			width: 20%;
 		}
 	}
 }
