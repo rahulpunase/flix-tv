@@ -14,7 +14,7 @@ export interface IContentSwiper {
 	tabOptions: Array<ITabOption>;
 }
 
-export interface ISwiperData {
+export interface IContentResult {
 	"adult": boolean,
 	"backdrop_path": string,
 	"genre_ids": Array<number>
@@ -31,9 +31,9 @@ export interface ISwiperData {
 	"vote_count": number
 }
 
-export interface IContentSwiperResult {
+export interface IContentResultObj {
 	page: number;
-	results: Array<ISwiperData>;
+	results: Array<IContentResult>;
 	totalPages: number;
 	total_results: number;
 }
@@ -41,7 +41,7 @@ export interface IContentSwiperResult {
 const ContentSwiper = (props: IContentSwiper) => {
 	const [loading, setLoading] = useState<boolean>(true);
 	const [activeTab, setActiveTab] = useState<ITabOption>();
-	const [swiperResult, setSwiperResult] = useState<IContentSwiperResult>({
+	const [swiperResult, setSwiperResult] = useState<IContentResultObj>({
 		page: 0,
 		results: [],
 		totalPages: 0,
@@ -63,7 +63,7 @@ const ContentSwiper = (props: IContentSwiper) => {
 
 	const makeApiRequestToFetchData = (tabApiPath: string) => {
 		setLoading(true);
-		getR<IContentSwiperResult>(tabApiPath)
+		getR<IContentResultObj>(tabApiPath)
 			.subscribe(data => {
 				setSwiperResult(data);
 				setLoading(false);
